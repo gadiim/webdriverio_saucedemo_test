@@ -36,19 +36,35 @@ class InventoryPage {
     return this.inventoryProductDescription.$(".inventory_item_name");
   }
 
+  get inventoryProductPrice() {
+    return this.inventoryProductDescription.$(".inventory_item_price");
+  }
+
   get btnAddToCard() {
     return this.inventoryProductDescription.$(
-      "#add-to-cart-sauce-labs-backpack"
+      '[data-test="add-to-cart-sauce-labs-backpack"]'
     );
   }
 
   // Cart Product
+  get cartTitle() {
+    return $(`[data-test="title"]`);
+  }
+
   get cartContentsContainer() {
     return $("#cart_contents_container");
   }
 
   get cartProductName() {
     return this.cartContentsContainer.$(".inventory_item_name");
+  }
+
+  get btnRemoveProduct() {
+    return $(`[data-test="remove-sauce-labs-backpack"]`);
+  }
+
+  get btnCheckout() {
+    return $("#checkout");
   }
   //
 
@@ -75,7 +91,7 @@ class InventoryPage {
   get nameZToA() {
     return $('option[value="za"]');
   }
-// Social Media Icons
+  // Social Media Icons
   get twitterIcon() {
     return $('a[href="https://twitter.com/saucelabs"]');
   }
@@ -94,6 +110,18 @@ class InventoryPage {
     await expect(this.cart).toBeDisplayed();
   }
 
+  async isLoaded() {
+    await expect(browser).toHaveUrl(this.inventoryPath);
+    await expect(this.products).toBeDisplayed();
+    await expect(this.cart).toBeDisplayed();
+  }
+
+  async isInventoryPageLoaded() {
+    await this.isLoaded();
+    const cartText = await this.cart.getText();
+    await expect(cartText).toBe("");
+  }
+
   async clickBtnMenu() {
     await this.btnMenu.click();
     await this.sidebarMenu.waitForDisplayed();
@@ -105,12 +133,24 @@ class InventoryPage {
   }
 
   async clickCartBadge() {
-    await this.cartBadge.click();
+    await this.cart.click();
+    expect(this.cartTitle).toBeDisplayed();
   }
 
   async recordProductName() {
     const productName = await this.inventoryProductName.getText();
+    console.log("Record Product Name:", productName);
     return productName;
+  }
+
+  async recordProductPrice() {
+    // const productPrice = await this.inventoryProductPrice.getText();
+    // console.log("Record Product Price:", productPrice);
+    // return productPrice;
+    const productPrice = await this.inventoryProductPrice.getText();
+    const price = productPrice.match(/\d+(\.\d+)?/)[0];
+    console.log("Record Product Price:", price);
+    return price;
   }
 
   async comparisonProductName(item) {
@@ -119,11 +159,15 @@ class InventoryPage {
     console.log(`Cart product: ${productName}`);
   }
 
-  async clickBtnAddToCard() {
+  async clickBtnAddProductToCard() {
     await this.btnAddToCard.click();
     await this.cartBadge.waitForDisplayed();
     const badgeText = await this.cartBadge.getText();
     await expect(badgeText).toBe("1");
+  }
+
+  async clickBtnRemoveProductFromCard() {
+    await this.btnRemoveProduct.click();
   }
 
   async clickSocialMediaIcon(socialMediaIcon) {

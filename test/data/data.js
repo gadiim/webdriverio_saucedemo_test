@@ -14,8 +14,16 @@ module.exports = {
     username: "standarD_user",
     password: "secret_sauce",
   },
-  errorMessage:
-    "Epic sadface: Username and password do not match any user in this service",
+  tc_008: {
+    firstname: "John",
+    lastname: "Doe",
+    postalcode: "07911",
+  },
+  errorMessage: {
+    errorFill: "Epic sadface: Username and password do not match any user in this service",
+    emptyCart: "Cart is empty"
+  },
+    thankyouMessage: "Thank you for your order!",
   socialMediaNames: {
     twitter: "x",
     facebook: "facebook",
