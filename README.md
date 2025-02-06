@@ -22,11 +22,11 @@ To set up the project, follow these steps:
 
 1. **Clone the Repository**:
 
-   ```bash
+```
   git clone https://github.com/gadiim/webdriverio_saucedemo_test.git
-   ```
+```
 
-2. **Install Dependencies**: Run the following command to install the required packages:
+2. **Install Dependencies**:
    
    ```bash
    npm install
