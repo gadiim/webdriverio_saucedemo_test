@@ -22,9 +22,9 @@ To set up the project, follow these steps:
 
 1. **Clone the Repository**:
 
-```
-  git clone https://github.com/gadiim/webdriverio_saucedemo_test.git
-```
+   ```
+   git clone https://github.com/gadiim/webdriverio_saucedemo_test.git
+   ```
 
 2. **Install Dependencies**:
    
