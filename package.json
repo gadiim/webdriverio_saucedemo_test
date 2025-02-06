@@ -8,8 +8,14 @@
     "allure:open": "allure open allure-report",
     "allure:clean": "rimraf allure-results"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "webdriverio", 
+    "saucedemo", 
+    "testing",
+    "automation",
+    "allure",
+    "e2e"],
+  "author": "Hennadii Melnyk",
   "license": "ISC",
   "description": "",
   "devDependencies": {
