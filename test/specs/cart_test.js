@@ -1,27 +1,27 @@
-const LoginPage = require("../pageobjects/loginpage");
-const InventoryPage = require("../pageobjects/inventorypage");
+const loginPage = require("../pageobjects/loginpage");
+const inventoryPage = require("../pageobjects/inventorypage");
 const data = require("../data/data");
 
 describe("Cart Functionality Test", () => {
     beforeEach(async () => {
-      await LoginPage.open();
-      await LoginPage.login(data.tc_001.username, data.tc_001.password);
-      await InventoryPage.isLoaded();
+      await loginPage.open();
+      await loginPage.login(data.tc_001.username, data.tc_001.password);
+      await inventoryPage.isLoaded();
     });
     // TC-005
     let productName = "";
     it("should save the cart after logout and restore it upon login", async () => {  
-      productName = await InventoryPage.recordProductName();
+      productName = await inventoryPage.recordProductName();
       console.log(`Added product Name: ${productName}`);
-      await InventoryPage.clickBtnAddProductToCard();
-      await InventoryPage.clickBtnMenu();
-      await InventoryPage.logout();
-      await LoginPage.isLoginPageLoaded();
-      await LoginPage.open();
-      await LoginPage.login(data.tc_001.username, data.tc_001.password);
-      await InventoryPage.isLoaded();
-      await InventoryPage.clickCartBadge();
-      await InventoryPage.comparisonProductName(productName);
-      await InventoryPage.clickBtnRemoveProductFromCard();
+      await inventoryPage.clickBtnAddProductToCard();
+      await inventoryPage.clickBtnMenu();
+      await inventoryPage.logout();
+      await loginPage.isloginPageLoaded();
+      await loginPage.open();
+      await loginPage.login(data.tc_001.username, data.tc_001.password);
+      await inventoryPage.isLoaded();
+      await inventoryPage.clickCartBadge();
+      await inventoryPage.comparisonProductName(productName);
+      await inventoryPage.clickBtnRemoveProductFromCard();
     });
   });

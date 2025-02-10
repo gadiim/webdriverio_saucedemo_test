@@ -22,12 +22,14 @@ To set up the project, follow these steps:
 
 1. **Clone the Repository**:
 
-   ```
+   ```bash
    git clone https://github.com/gadiim/webdriverio_saucedemo_test.git
    ```
-
-2. **Install Dependencies**:
-   
+2. **Navigate into the directory**:
+   ```bash
+   cd webdriverio_saucedemo_test
+   ```
+3. **Install Dependencies**:
    ```bash
    npm install
    ```
@@ -43,43 +45,43 @@ Allure is used for generating detailed test reports.
 ### Running Tests
 
 * To open the WebdriverIO Test Runner:
-```
-npm run test
-```
+   ```bush  
+   npm run test
+   ```
 * To run tests for specific test files:
-```
-npm run test:login
-```
-```
-npm run test:logout
-```
-```
-npm run test:cart
-```
-```
-npm run test:sorting
-```
-```
-npm run test:footer
-```
-```
-npm run test:checkout
-```
+   ```bush 
+   npm run test:login
+   ```
+   ```bush
+   npm run test:logout
+   ```
+   ```bush 
+   npm run test:cart
+   ```
+   ```bush
+      npm run test:sorting
+   ```
+   ```bush 
+   npm run test:footer
+   ```
+   ```bush 
+   npm run test:checkout
+   ```
 
 ### Generate Allure Reports
 
 * To generate the Allure report from the test results:
-```
-npm run allure:generate
-```
+   ```bush 
+   npm run allure:generate
+   ```
 * To open the Allure report in the browser.
-```
-npm run allure:open
-```
+   ```bush 
+   npm run allure:open
+   ```
 * To clears the reports directory.
-```
-npm run allure:clear
-```
+   ```bush 
+   npm run allure:clean
+   ```
 
 ## Test Structure
 
@@ -93,15 +95,21 @@ webdriverio_saucedemo_test/
 ├── wdio.conf.js
 ├── test/
 │   ├── specs/
-│   │   └── test.e2e.js
+│   │   ├── login_test.js
+│   │   ├── logout_test.js
+│   │   ├── cart_test.js
+│   │   ├── sorting_test.js
+│   │   ├── footer_test.js
+│   │   ├── checkout_test.js
 │   ├── pageobjects/
 │   │   ├── loginpage.js
-│   │   └── inventorypage.js
-│   │   └── cartpage.js
-│   │   └── checkoutpage.js
+│   │   ├── inventorypage.js
+│   │   ├── cartpage.js
+│   │   ├── checkoutpage.js
 │   └── data/
-│       └── users.js
-```
+│   │   ├── fake_data_generator.js
+│   │   └── data.js
+   ```
 * `wdio.conf.js`: The WebdriverIO configuration file that contains test settings, browser capabilities, and environment details.
 * `test/specs/`: Contains the end-to-end test files.
 * `test/pageobjects/`: Contains the page object files that define the structure and elements of the webpages to interact with.

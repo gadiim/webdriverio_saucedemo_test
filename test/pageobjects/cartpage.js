@@ -1,4 +1,4 @@
-class cartPage {
+class CartPage {
   get cartPath() {
     return "https://www.saucedemo.com/cart.html";
   }
@@ -38,4 +38,4 @@ class cartPage {
     expect(pageText).toContain(message);
   }
 }
-module.exports = new cartPage();
+module.exports = new CartPage();

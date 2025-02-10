@@ -1,3 +1,5 @@
+const fake = require('./fake_data_generator.js');
+
 module.exports = {
   colors: {
     red: "rgb(226,35,26)",
@@ -15,9 +17,9 @@ module.exports = {
     password: "secret_sauce",
   },
   tc_008: {
-    firstname: "John",
-    lastname: "Doe",
-    postalcode: "07911",
+    firstname: fake.dataGenerator.generateUserData().firstName,
+    lastname: fake.dataGenerator.generateUserData().lastName,
+    postalcode: fake.dataGenerator.generateUserData().postalcode,
   },
   errorMessage: {
     errorFill: "Epic sadface: Username and password do not match any user in this service",
