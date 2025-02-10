@@ -1,32 +1,42 @@
-const { $ } = require("@wdio/globals");
+const loginPath = "https://www.saucedemo.com/";
+const inputUsernameSelector = '[data-test="username"]';
+const inputPasswordSelector = '[data-test="password"]';
+const btnSubmitSelector = '[data-test="login-button"]';
+const usernameErrorIconSelector =
+  inputUsernameSelector +
+  " + svg.svg-inline--fa.fa-times-circle.fa-w-16.error_icon";
+const passwordErrorIconSelector =
+  inputPasswordSelector +
+  " + svg.svg-inline--fa.fa-times-circle.fa-w-16.error_icon";
+const errorMessageSelector = 'h3[data-test="error"]';
 
 class LoginPage {
   get loginPath() {
-    return "https://www.saucedemo.com/";
+    return loginPath;
   }
 
   get inputUsername() {
-    return $("#user-name");
+    return $(inputUsernameSelector);
   }
 
   get inputPassword() {
-    return $("#password");
+    return $(inputPasswordSelector);
   }
 
   get btnSubmit() {
-    return $("#login-button");
+    return $(btnSubmitSelector);
   }
 
   get usernameErrorIcon() {
-    return $$("svg.svg-inline--fa.fa-times-circle.fa-w-16.error_icon")[0];
+    return $(usernameErrorIconSelector);
   }
 
   get passwordErrorIcon() {
-    return $$("svg.svg-inline--fa.fa-times-circle.fa-w-16.error_icon")[1];
+    return $(passwordErrorIconSelector);
   }
 
   get errorMessage() {
-    return $('h3[data-test="error"]');
+    return $(errorMessageSelector);
   }
 
   async open() {

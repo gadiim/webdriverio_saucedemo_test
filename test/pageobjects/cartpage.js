@@ -1,6 +1,4 @@
-const data = require("../data/data");
-
-class CarPage {
+class cartPage {
   get cartPath() {
     return "https://www.saucedemo.com/cart.html";
   }
@@ -40,4 +38,4 @@ class CarPage {
     expect(pageText).toContain(message);
   }
 }
-module.exports = new CarPage();
+module.exports = new cartPage();

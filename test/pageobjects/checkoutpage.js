@@ -1,67 +1,79 @@
-const data = require("../data/data");
+const checkoutYourInformationPath = "https://www.saucedemo.com/checkout-step-one.html";
+const checkoutOverviewPath = "https://www.saucedemo.com/checkout-step-two.html";
+const checkoutCompletePath = "https://www.saucedemo.com/checkout-complete.html";
+const inputFirstNameSelector = '[data-test="firstName"]';
+const inputLastNameSelector = '[data-test="lastName"]';
+const inputPostalCodeSelector = '[data-test="postalCode"]';
+const btnContinueSelector = '[data-test="continue"]';
+const overviewProductDescriptionSelector = '.cart_item_label';
+const overviewProductNameSelector = '.inventory_item_name';
+const overviewProductPriceSelector = '.inventory_item_price';
+const overviewTotalPriceSelector = '.summary_subtotal_label';
+const btnFinishSelector = '[data-test="finish"]';
+const completeHeaderSelector = '[data-test="complete-header"]';
+const btnBackHomeSelector = '[data-test="back-to-products"]';
 
 class CheckoutPage {
   get checkoutYourInformationPath() {
-    return "https://www.saucedemo.com/checkout-step-one.html";
+    return checkoutYourInformationPath;
   }
 
   get checkoutOverviewPath() {
-    return "https://www.saucedemo.com/checkout-step-two.html";
+    return checkoutOverviewPath;
   }
 
   get checkoutCompletePath() {
-    return "https://www.saucedemo.com/checkout-complete.html";
+    return checkoutCompletePath;
   }
 
   get inputFirstName() {
-    return $("#first-name");
+    return $(inputFirstNameSelector);
   }
 
   get inputLastName() {
-    return $('[data-test="lastName"]');
+    return $(inputLastNameSelector);
   }
 
   get inputPostalCode() {
-    return $('[data-test="postalCode"]');
+    return $(inputPostalCodeSelector);
   }
 
   get btnContinue() {
-    return $('[data-test="continue"]');
+    return $(btnContinueSelector);
   }
 
   // Overview Product
   get overviewProductDescription() {
-    return $(".cart_item_label");
+    return $(overviewProductDescriptionSelector);
   }
 
   get overviewProductName() {
-    return this.overviewProductDescription.$(".inventory_item_name");
+    return this.overviewProductDescription.$(overviewProductNameSelector);
   }
 
   get overviewProductPrice() {
-    return this.overviewProductDescription.$(".inventory_item_price");
+    return this.overviewProductDescription.$(overviewProductPriceSelector);
   }
 
   get overviewTotalPrice() {
-    return $(".summary_subtotal_label");
+    return $(overviewTotalPriceSelector);
   }
 
   get btnFinish() {
-    return $('[data-test="finish"]');
+    return $(btnFinishSelector);
   }
+
   // Complete Page
   get completeHeader() {
-    return $('[data-test="complete-header"]');
+    return $(completeHeaderSelector);
   }
 
   get btnBackHome() {
-    return $('[data-test="back-to-products"]');
+    return $(btnBackHomeSelector);
   }
 
   async isCheckoutYourInformationLoaded() {
     await expect(browser).toHaveUrl(this.checkoutYourInformationPath);
-    // await expect(this.products).toBeDisplayed();
-    // await expect(this.cart).toBeDisplayed();
   }
 
   async isCheckoutOverviewLoaded() {
@@ -80,11 +92,6 @@ class CheckoutPage {
     await expect(productName).toBe(item);
   }
 
-  // async comparisonProductPrice(item) {
-  //   const productPrice = await this.overviewProductPrice.getText();
-  //   await expect(productPrice).toBe(item);
-  // }
-
   async comparisonProductPrice(item) {
     const totalPrice = await this.overviewTotalPrice.getText();
     const price = totalPrice.match(/\d+(\.\d+)?/)[0];
@@ -102,4 +109,5 @@ class CheckoutPage {
     await this.btnBackHome.click();
   }
 }
+
 module.exports = new CheckoutPage();

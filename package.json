@@ -4,17 +4,24 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio run ./wdio.conf.js",
+    "test:login": "npx wdio run ./wdio.conf.js --spec ./test/specs/login_test.js",
+    "test:logout": "npx wdio run ./wdio.conf.js --spec ./test/specs/logout_test.js",
+    "test:cart": "npx wdio run ./wdio.conf.js --spec ./test/specs/cart_test.js",
+    "test:sorting": "npx wdio run ./wdio.conf.js --spec ./test/specs/sorting_test.js",
+    "test:footer": "npx wdio run ./wdio.conf.js --spec ./test/specs/footer_test.js",
+    "test:checkout": "npx wdio run ./wdio.conf.js --spec ./test/specs/checkout_test.js",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
     "allure:clean": "rimraf allure-results"
   },
   "keywords": [
-    "webdriverio", 
-    "saucedemo", 
+    "webdriverio",
+    "saucedemo",
     "testing",
     "automation",
     "allure",
-    "e2e"],
+    "e2e"
+  ],
   "author": "Hennadii Melnyk",
   "license": "ISC",
   "description": "",

@@ -1,4 +1,5 @@
 class InventoryPage {
+  
   get inventoryPath() {
     return "https://www.saucedemo.com/inventory.html";
   }
@@ -139,7 +140,7 @@ class InventoryPage {
 
   async recordProductName() {
     const productName = await this.inventoryProductName.getText();
-    console.log("Record Product Name:", productName);
+    console.log("Recorded Product Name:", productName);
     return productName;
   }
 

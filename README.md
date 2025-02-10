@@ -32,20 +32,54 @@ To set up the project, follow these steps:
    npm install
    ```
 
-## Scripts
-
-`npm run`:
-
-- `test`: open the WebdriverIO Test Runner.
-- `allure:generate`: generates the Allure report from the test results.
-- `allure:open`: opens the Allure report in the browser.
-- `allure:clear`: clears the reports directory.
-
 ## Allure Reporting
 
 Allure is used for generating detailed test reports.
 
 <img src=".images/allure_report_overview.jpg" width="400"/>  <img src=".images/allure_report_suites.jpg" width="400"/>
+
+## Scripts
+
+### Running Tests
+
+* To open the WebdriverIO Test Runner:
+```
+npm run test
+```
+* To run tests for specific test files:
+```
+npm run test:login
+```
+```
+npm run test:logout
+```
+```
+npm run test:cart
+```
+```
+npm run test:sorting
+```
+```
+npm run test:footer
+```
+```
+npm run test:checkout
+```
+
+### Generate Allure Reports
+
+* To generate the Allure report from the test results:
+```
+npm run allure:generate
+```
+* To open the Allure report in the browser.
+```
+npm run allure:open
+```
+* To clears the reports directory.
+```
+npm run allure:clear
+```
 
 ## Test Structure
 
