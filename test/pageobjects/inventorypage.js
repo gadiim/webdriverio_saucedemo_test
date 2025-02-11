@@ -1,114 +1,132 @@
+const inventoryPath = "https://www.saucedemo.com/inventory.html";
+const productsSelector = "#inventory_container";
+const cartSelector = ".shopping_cart_link";
+const btnMenuSelector = "button[type='button'][id='react-burger-menu-btn']";
+const sidebarMenuSelector = ".bm-menu-wrap";
+const menuItemsSelector = ".bm-item.menu-item";
+const logoutLinkSelector = '[id="logout_sidebar_link"]';
+const inventoryProductDescriptionSelector = ".inventory_item_description";
+const inventoryProductNameSelector = ".inventory_item_name";
+const inventoryProductPriceSelector = ".inventory_item_price";
+const btnAddToCardSelector = '[data-test="add-to-cart-sauce-labs-backpack"]';
+const cartTitleSelector = '[data-test="title"]';
+const cartContentsContainerSelector = "#cart_contents_container";
+const cartProductNameSelector = ".inventory_item_name";
+const btnRemoveProductSelector = '[data-test="remove-sauce-labs-backpack"]';
+const btnCheckoutSelector = "#checkout";
+const cartBadgeSelector = ".shopping_cart_badge";
+const sortDropdownSelector = ".product_sort_container";
+const priceLowToHighOptionSelector = 'option[value="lohi"]';
+const priceHighToLowOptionSelector = 'option[value="hilo"]';
+const nameAToZSelector = 'option[value="az"]';
+const nameZToASelector = 'option[value="za"]';
+const twitterIconSelector = 'a[href="https://twitter.com/saucelabs"]';
+const facebookIconSelector = 'a[href="https://www.facebook.com/saucelabs"]';
+const linkedinIconSelector = 'a[href="https://www.linkedin.com/company/sauce-labs/"]';
+
 class InventoryPage {
   
   get inventoryPath() {
-    return "https://www.saucedemo.com/inventory.html";
+    return inventoryPath;
   }
 
   get products() {
-    return $("#inventory_container");
+    return $(productsSelector);
   }
 
   get cart() {
-    return $(".shopping_cart_link");
+    return $(cartSelector);
   }
 
   get btnMenu() {
-    return $('button[type="button"][id="react-burger-menu-btn"]');
+    return $(btnMenuSelector);
   }
 
   get sidebarMenu() {
-    return $('[class="bm-menu-wrap"]');
+    return $(sidebarMenuSelector);
   }
 
   get menuItems() {
-    return $$('[class="bm-item menu-item"]');
+    return $$(menuItemsSelector);
   }
 
   get logoutLink() {
-    return $('[id="logout_sidebar_link"]');
+    return $(logoutLinkSelector);
   }
 
   // Inventory Product
   get inventoryProductDescription() {
-    return $(".inventory_item_description");
+    return $(inventoryProductDescriptionSelector);
   }
 
   get inventoryProductName() {
-    return this.inventoryProductDescription.$(".inventory_item_name");
+    return this.inventoryProductDescription.$(inventoryProductNameSelector);
   }
 
   get inventoryProductPrice() {
-    return this.inventoryProductDescription.$(".inventory_item_price");
+    return this.inventoryProductDescription.$(inventoryProductPriceSelector);
   }
 
   get btnAddToCard() {
-    return this.inventoryProductDescription.$(
-      '[data-test="add-to-cart-sauce-labs-backpack"]'
-    );
+    return this.inventoryProductDescription.$(btnAddToCardSelector);
   }
 
   // Cart Product
   get cartTitle() {
-    return $(`[data-test="title"]`);
+    return $(cartTitleSelector);
   }
 
   get cartContentsContainer() {
-    return $("#cart_contents_container");
+    return $(cartContentsContainerSelector);
   }
 
   get cartProductName() {
-    return this.cartContentsContainer.$(".inventory_item_name");
+    return this.cartContentsContainer.$(cartProductNameSelector);
   }
 
   get btnRemoveProduct() {
-    return $(`[data-test="remove-sauce-labs-backpack"]`);
+    return $(btnRemoveProductSelector);
   }
 
   get btnCheckout() {
-    return $("#checkout");
+    return $(btnCheckoutSelector);
   }
-  //
 
   get cartBadge() {
-    return $(".shopping_cart_badge");
+    return $(cartBadgeSelector);
   }
   // Sorting
   get sortDropdown() {
-    return $(".product_sort_container");
+    return $(sortDropdownSelector);
   }
 
   get priceLowToHighOption() {
-    return $('option[value="lohi"]');
+    return $(priceLowToHighOptionSelector);
   }
 
   get priceHighToLowOption() {
-    return $('option[value="hilo"]');
+    return $(priceHighToLowOptionSelector);
   }
 
   get nameAToZ() {
-    return $('option[value="az"]');
+    return $(nameAToZSelector);
   }
 
   get nameZToA() {
-    return $('option[value="za"]');
+    return $(nameZToASelector);
   }
+
   // Social Media Icons
   get twitterIcon() {
-    return $('a[href="https://twitter.com/saucelabs"]');
+    return $(twitterIconSelector);
   }
 
   get facebookIcon() {
-    return $('a[href="https://www.facebook.com/saucelabs"]');
+    return $(facebookIconSelector);
   }
 
   get linkedinIcon() {
-    return $('a[href="https://www.linkedin.com/company/sauce-labs/"]');
-  }
-
-  async isLoaded() {
-    await expect(browser).toHaveUrl(this.inventoryPath);
-    await expect(this.products).toBeDisplayed();
-    await expect(this.cart).toBeDisplayed();
+    return $(linkedinIconSelector);
   }
 
   async isLoaded() {
@@ -173,6 +191,17 @@ class InventoryPage {
 
   async clickSocialMediaIcon(socialMediaIcon) {
     await socialMediaIcon.click();
+  }
+
+  async backToInventoryPage() {
+    await browser.closeWindow();
+    await browser.switchWindow(this.inventoryPath);
+  }
+
+  async isSocialMediaPageLoaded(socialMediaIcon, socialMediaName) {
+    await this.clickSocialMediaIcon(socialMediaIcon);
+    await browser.switchWindow(socialMediaName);
+    expect(await browser.getUrl()).toContain(socialMediaName);
   }
 }
 

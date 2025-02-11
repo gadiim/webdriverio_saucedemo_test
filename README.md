@@ -59,7 +59,7 @@ Allure is used for generating detailed test reports.
    npm run test:cart
    ```
    ```bush
-      npm run test:sorting
+   npm run test:sorting
    ```
    ```bush 
    npm run test:footer

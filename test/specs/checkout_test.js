@@ -31,11 +31,11 @@ describe("Checkout Functionality Tests", () => {
       await checkoutPage.comparisonProductPrice(productPrice);
       expect(await checkoutPage.clickBtnFinish()).toBe(data.thankyouMessage);
       await checkoutPage.clickBtnBackHome();
-      await inventoryPage.isinventoryPageLoaded();
+      await inventoryPage.isInventoryPageLoaded();
   
     });
 // TC-009
-    xit("should display error message when click checkout button without products in cart", async () => {
+    it("should display error message when click checkout button without products in cart", async () => {
       await inventoryPage.clickCartBadge();
       await cartPage.iscartPageLoaded();
       await cartPage.clickBtnCheckout();
