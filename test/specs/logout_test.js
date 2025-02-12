@@ -12,6 +12,6 @@ describe("Logout Functionality Test", () => {
   it("should open the menu, display sidebar with 4 items, and show a clear login page after logout", async () => {
     await inventoryPage.clickBtnMenu();
     await inventoryPage.logout();
-    await loginPage.isloginPageLoaded();
+    await loginPage.isLoginPageLoaded();
   });
 });

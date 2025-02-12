@@ -1,26 +1,33 @@
+const cartPath = "https://www.saucedemo.com/cart.html";
+const cartTitleSelector = '[data-test="title"]';
+const cartContentsContainerSelector = "#cart_contents_container";
+const cartProductNameSelector = ".inventory_item_name";
+const btnRemoveProductSelector = '[data-test="remove-sauce-labs-backpack"]';
+const btnCheckoutSelector = "#checkout";
+
 class CartPage {
   get cartPath() {
-    return "https://www.saucedemo.com/cart.html";
+    return cartPath;
   }
 
   get cartTitle() {
-    return $(`[data-test="title"]`);
+    return $(cartTitleSelector);
   }
 
   get cartContentsContainer() {
-    return $("#cart_contents_container");
+    return $(cartContentsContainerSelector);
   }
 
   get cartProductName() {
-    return this.cartContentsContainer.$(".inventory_item_name");
+    return this.cartContentsContainer.$(cartProductNameSelector);
   }
 
   get btnRemoveProduct() {
-    return $(`[data-test="remove-sauce-labs-backpack"]`);
+    return $(btnRemoveProductSelector);
   }
 
   get btnCheckout() {
-    return $("#checkout");
+    return $(btnCheckoutSelector);
   }
 
   async isCartPageLoaded() {

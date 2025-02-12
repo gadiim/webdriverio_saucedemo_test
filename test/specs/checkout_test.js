@@ -37,7 +37,7 @@ describe("Checkout Functionality Tests", () => {
 // TC-009
     it("should display error message when click checkout button without products in cart", async () => {
       await inventoryPage.clickCartBadge();
-      await cartPage.iscartPageLoaded();
+      await cartPage.isCartPageLoaded();
       await cartPage.clickBtnCheckout();
       await cartPage.isContainMessage(data.errorMessage.emptyCart);
     });

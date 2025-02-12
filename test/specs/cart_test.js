@@ -16,7 +16,7 @@ describe("Cart Functionality Test", () => {
       await inventoryPage.clickBtnAddProductToCard();
       await inventoryPage.clickBtnMenu();
       await inventoryPage.logout();
-      await loginPage.isloginPageLoaded();
+      await loginPage.isLoginPageLoaded();
       await loginPage.open();
       await loginPage.login(data.tc_001.username, data.tc_001.password);
       await inventoryPage.isLoaded();
